@@ -10,4 +10,7 @@ Welcome to the RPG Maker MZ plugins collection! This repository contains a varie
 2. **EmotionAnywhere**  
    This plugin allows you to display balloon icons on followers, adding more expressive interactions and enhancing the storytelling in your game.
 
+3. **AnimationPlayer**
+   Enables playing custom animations from external files, supporting formats like JSON and YAML for less repetition.
+
 Feel free to explore and integrate these plugins into your projects to *elevate* your RPG Maker MZ creations!

@@ -1,0 +1,54 @@
+open_door:
+    - <direction_fix> off
+    - <turn_left>
+    - <wait> 3
+    - <turn_right>
+    - <wait> 3
+    - <turn_up>
+    - <through> on
+
+close_door:
+    - <direction_fix> off
+    - <turn_right>
+    - <wait> 3
+    - <turn_left>
+    - <wait> 3
+    - <turn_down>
+    - <through> off
+
+open_chest:
+    - <direction_fix> off
+    - <turn_left>
+    - <wait> 3
+    - <turn_right>
+    - <wait> 3
+    - <turn_up>
+
+close_chest:
+    - <direction_fix> off
+    - <turn_right>
+    - <wait> 3
+    - <turn_left>
+    - <wait> 3
+    - <turn_down>
+
+turn_switch:
+    - <direction_fix> off
+    - <turn_left>
+    - <wait> 3
+    - <turn_right>
+    - <wait> 3
+
+shut_switch:
+    - <direction_fix> off
+    - <turn_right>
+    - <wait> 3
+    - <turn_left>
+    - <wait> 3
+
+move_left:
+    - <move_left>
+    - <move_left>
+    - <move_left>
+    - <move_left>
+    - <move_left>
