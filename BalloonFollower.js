@@ -2,26 +2,13 @@
  * @target MZ
  * @plugindesc Allow to show balloon icon on followers.
  * @author Raidez
- * @help Balloon Icon index (by default):
- *       1. Exclamation
- *       2. Question
- *       3. Music Note
- *       4. Heart
- *       5. Anger
- *       6. Sweat
- *       7. Frustration
- *       8. Silence
- *       9. Light Bulb
- *       10. Zzz
- * 
- * =============================================================================
- * TODO:
- * =============================================================================
- * - Look how to populate option arg dynamically.
- * 
+ * @help
  * =============================================================================
  * Changelog
  * =============================================================================
+ * 
+ * Version 1.2.0:
+ * - Added default balloon icon value to the selection menu.
  * 
  * Version 1.1.0:
  * - Some refactoring and code cleanup.
@@ -45,9 +32,37 @@
  * @arg balloonId
  * @text Balloon Icon
  * @desc Type of balloon icon to be displayed.
- *       Check plugin help to get Balloon Icon index.
- * @type number
- * @min 1
+ * @type select
+ * @option Exclamation
+ * @value 1
+ * @option Question
+ * @value 2
+ * @option Music Note
+ * @value 3
+ * @option Heart
+ * @value 4
+ * @option Anger
+ * @value 5
+ * @option Sweat
+ * @value 6
+ * @option Frustration
+ * @value 7
+ * @option Silence
+ * @value 8
+ * @option Light Bulb
+ * @value 9
+ * @option Zzz
+ * @value 10
+ * @option User-defined 1
+ * @value 11
+ * @option User-defined 2
+ * @value 12
+ * @option User-defined 3
+ * @value 13
+ * @option User-defined 4
+ * @value 14
+ * @option User-defined 5
+ * @value 15
  * 
  * @arg wait
  * @text Wait for Completion
@@ -64,9 +79,37 @@
  * @arg balloonId
  * @text Balloon Icon
  * @desc Type of balloon icon to be displayed.
- *       Check plugin help to get Balloon Icon index.
- * @type number
- * @min 1
+ * @type select
+ * @option Exclamation
+ * @value 1
+ * @option Question
+ * @value 2
+ * @option Music Note
+ * @value 3
+ * @option Heart
+ * @value 4
+ * @option Anger
+ * @value 5
+ * @option Sweat
+ * @value 6
+ * @option Frustration
+ * @value 7
+ * @option Silence
+ * @value 8
+ * @option Light Bulb
+ * @value 9
+ * @option Zzz
+ * @value 10
+ * @option User-defined 1
+ * @value 11
+ * @option User-defined 2
+ * @value 12
+ * @option User-defined 3
+ * @value 13
+ * @option User-defined 4
+ * @value 14
+ * @option User-defined 5
+ * @value 15
  * 
  * @arg initialDelay
  * @text Initial Delay
