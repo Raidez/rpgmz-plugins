@@ -2,6 +2,7 @@
  * @target MZ
  * @plugindesc Restrict NPC roaming.
  * @author Raidez
+ * @url https://github.com/Raidez/rpgmz-plugins
  * @help
  * =============================================================================
  * TODO:

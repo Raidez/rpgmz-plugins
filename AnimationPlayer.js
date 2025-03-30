@@ -2,6 +2,7 @@
  * @target MZ
  * @plugindesc Play animations from  a specified file.
  * @author Raidez
+ * @url https://github.com/Raidez/rpgmz-plugins
  * @help Check the exemple below to see how to use this plugin:
  * 
  * Example: animations.yaml
@@ -14,6 +15,7 @@
  * =============================================================================
  * - Add all commands.
  * - Stress tests timing.
+ * - Exporting existing animation.
  * 
  * =============================================================================
  * Changelog

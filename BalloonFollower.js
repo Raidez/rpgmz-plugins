@@ -2,6 +2,7 @@
  * @target MZ
  * @plugindesc Allow to show balloon icon on followers.
  * @author Raidez
+ * @url https://github.com/Raidez/rpgmz-plugins
  * @help
  * =============================================================================
  * Changelog
