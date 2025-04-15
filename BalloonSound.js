@@ -84,7 +84,7 @@
 (() => {
     const pluginName = "BalloonSound";
 
-    let iconSoundList = [];
+    let iconSoundList = new Array();
     iconSoundList = PluginManager.parameters(pluginName).iconSoundList;
     iconSoundList = JSON.parse(iconSoundList);
     iconSoundList = iconSoundList.map(JSON.parse);
