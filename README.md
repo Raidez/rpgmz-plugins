@@ -5,12 +5,12 @@ Welcome to the RPG Maker MZ plugins collection! This repository contains a varie
 ## Plugins
 
 1. **DogSitter** 
-   Create restriction or allow regions for players or NPCs, providing greater control over movement and interactions within your game.
+   Create restriction or allow regions for players or NPCs.
 
 2. **BallonFollower** 
-   This plugin allows you to display balloon icons on followers, adding more expressive interactions and enhancing the storytelling in your game.
+   Allow to show balloon icon on followers.
 
-3. **AnimationPlayer**
-   Enables playing custom animations from external files, supporting formats like JSON and YAML for less repetition.
+3. **BalloonSound**
+   Play sound effects when a balloon icon is showed.
 
 Feel free to explore and integrate these plugins into your projects to *elevate* your RPG Maker MZ creations!

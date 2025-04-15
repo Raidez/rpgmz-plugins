@@ -8,6 +8,11 @@
  * Changelog
  * =============================================================================
  * 
+ * Version 1.3.0:
+ * - Removed initial delay argument (become useless)
+ * - Added command to play balloon on every character
+ * - Fixed bug to play balloon only if follower exists
+ * 
  * Version 1.2.0:
  * - Added default balloon icon value to the selection menu.
  * 
@@ -64,6 +69,7 @@
  * @value 14
  * @option User-defined 5
  * @value 15
+ * @default 1
  * 
  * @arg wait
  * @text Wait for Completion
@@ -111,14 +117,63 @@
  * @value 14
  * @option User-defined 5
  * @value 15
+ * @default 1
  * 
- * @arg initialDelay
- * @text Initial Delay
- * @desc Delay in frames before the first balloon icon.
+ * @arg delay
+ * @text Delay
+ * @desc Delay in frames between each balloon icon.
  * @type number
  * @min 0
  * @max 76
  * @default 0
+ * 
+ * @arg wait
+ * @text Wait for Completion
+ * @desc Waits for the effect to finish.
+ * @type boolean
+ * @default false
+ * 
+ * 
+ * 
+ * @command balloonAllCharacters
+ * @text Show Ballon Icon on all Characters
+ * @desc Displays the specified balloon icon above all characters' heads.
+ * 
+ * @arg balloonId
+ * @text Balloon Icon
+ * @desc Type of balloon icon to be displayed.
+ * @type select
+ * @option Exclamation
+ * @value 1
+ * @option Question
+ * @value 2
+ * @option Music Note
+ * @value 3
+ * @option Heart
+ * @value 4
+ * @option Anger
+ * @value 5
+ * @option Sweat
+ * @value 6
+ * @option Frustration
+ * @value 7
+ * @option Silence
+ * @value 8
+ * @option Light Bulb
+ * @value 9
+ * @option Zzz
+ * @value 10
+ * @option User-defined 1
+ * @value 11
+ * @option User-defined 2
+ * @value 12
+ * @option User-defined 3
+ * @value 13
+ * @option User-defined 4
+ * @value 14
+ * @option User-defined 5
+ * @value 15
+ * @default 1
  * 
  * @arg delay
  * @text Delay
@@ -167,20 +222,17 @@
     PluginManager.registerCommand(PLUGIN_NAME, "balloonAllFollowers", function (args) {
         const balloonId = Number(args.balloonId);
         const wait = JSON.parse(args.wait || false);
-        const initialDelay = Number(args.initialDelay || 0);
         const delay = Number(args.delay || 0);
 
         // get followers
-        const followers = $gamePlayer.followers().data();
+        const followers = $gamePlayer.followers().data().filter(x => x.actor());
         if (followers.length === 0) {
             console.error("No followers found.");
             return;
         }
 
         // show balloons and wait
-        if (initialDelay || delay) {
-            waitDelay = initialDelay;
-
+        if (delay) {
             followers.forEach((x, i, arr) => {
                 delayStack.push(() => {
                     if ((arr.length - 1) !== i) {
@@ -200,11 +252,51 @@
         }
     });
 
+    PluginManager.registerCommand(PLUGIN_NAME, "balloonAllCharacters", function (args) {
+        const balloonId = Number(args.balloonId);
+        const wait = JSON.parse(args.wait || false);
+        const delay = Number(args.delay || 0);
+
+        // get followers
+        const followers = $gamePlayer.followers().data().filter(x => x.actor());
+        if (followers.length === 0) {
+            console.error("No followers found.");
+            return;
+        }
+
+        // show balloons and wait
+        if (delay) {
+            delayStack.push(() => {
+                waitDelay = delay;
+                $gameTemp.requestBalloon($gamePlayer, balloonId);
+            });
+
+            followers.forEach((x, i, arr) => {
+                delayStack.push(() => {
+                    if ((arr.length - 1) !== i) {
+                        waitDelay = delay;
+                    }
+
+                    $gameTemp.requestBalloon(x, balloonId);
+                });
+            });
+        } else {
+            $gameTemp.requestBalloon($gamePlayer, balloonId);
+            followers.forEach(x => $gameTemp.requestBalloon(x, balloonId));
+        }
+
+        if (wait) {
+            this.setWaitMode(WAIT_MODE);
+            followersList.push($gamePlayer);
+            followersList.push(...followers);
+        }
+    });
+
     // handle wait mode
     const _Game_Interpreter_updateWaitMode = Game_Interpreter.prototype.updateWaitMode;
     Game_Interpreter.prototype.updateWaitMode = function () {
         if (this._waitMode === WAIT_MODE) {
-            let waiting = followersList.some(x => x.isBalloonPlaying());
+            let waiting = followersList.some(x => x.isBalloonPlaying()) || delayStack.length > 0;
 
             // empty list when waiting is over
             if (!waiting) {
